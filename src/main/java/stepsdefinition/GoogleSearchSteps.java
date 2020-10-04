@@ -25,7 +25,7 @@ public class GoogleSearchSteps {
         googleSearchController.clickToGoogleSearchBtn();
     }
 
-    @Then("^System redirect to to  search results page$")
+    @Then("^System redirect to search results page$")
     public void systemRedirectToToSearchResultsPage() {
         googleSearchController.resultIsDisplayed();
     }
@@ -34,6 +34,17 @@ public class GoogleSearchSteps {
     @And("^the first result is \"([^\"]*)\"$")
     public void theFirstResultIsTheNameOfTheWindPatrickRothfuss(String expectedResult) {
         googleSearchController.isFirtDisplayedSearchedText(expectedResult);
+
+    }
+
+    @When("^I click on the first result link$")
+    public void iClickOnTheFirstResultLink() {
+        googleSearchController.clickOnResultIsDisplayed(1);
+    }
+
+    @Then("^System redirect to the \"([^\"]*)\" page$")
+    public void systemRedirectToThePage(String namePage) {
+        googleSearchController.isRedirecToPage(namePage);
 
     }
 }

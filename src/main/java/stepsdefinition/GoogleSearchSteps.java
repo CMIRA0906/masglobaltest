@@ -31,4 +31,9 @@ public class GoogleSearchSteps {
     }
 
 
+    @And("^the first result is \"([^\"]*)\"$")
+    public void theFirstResultIsTheNameOfTheWindPatrickRothfuss(String expectedResult) {
+        googleSearchController.isFirtDisplayedSearchedText(expectedResult);
+
+    }
 }

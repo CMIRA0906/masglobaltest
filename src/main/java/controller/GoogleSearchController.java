@@ -39,10 +39,21 @@ public class GoogleSearchController {
 
     public void resultIsDisplayed() {
         try {
-           Assert.assertTrue("Result is not desplayed",googleSearchPage.resultIsDisplayed());
+            Assert.assertTrue("Result is not desplayed", googleSearchPage.resultIsDisplayed());
         } catch (NoSuchElementException exception) {
             System.err.println(exception.getMessage());
         }
+
+    }
+
+
+    public void isFirtDisplayedSearchedText(String searchedText) {
+        try {
+            Assert.assertEquals("Found text is different that expected", googleSearchPage.getFirtsResultIsDisplayed(), searchedText);
+        } catch (Exception exception) {
+            System.err.println(exception.getMessage());
+        }
+
 
     }
 

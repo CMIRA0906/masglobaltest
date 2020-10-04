@@ -22,6 +22,9 @@ public class GoogleSearchPage {
     @FindBy(id = "result-stats")
     private WebElement resultStatsLabel;
 
+    @FindBy(xpath = "//*[@id=\"rso\"]/div[1]/div/div[1]/a/h3/span")
+    private WebElement firtsResultLabel;
+
     public GoogleSearchPage() {
         this.driver = browserConfiguration.getDriver();
         PageFactory.initElements(driver, this);
@@ -44,6 +47,10 @@ public class GoogleSearchPage {
 
     public boolean resultIsDisplayed() {
         return resultStatsLabel.isDisplayed();
+    }
+
+    public String getFirtsResultIsDisplayed() {
+        return firtsResultLabel.getText();
     }
 
 

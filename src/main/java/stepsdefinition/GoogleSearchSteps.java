@@ -32,7 +32,7 @@ public class GoogleSearchSteps {
 
 
     @And("^the first result is \"([^\"]*)\"$")
-    public void theFirstResultIsTheNameOfTheWindPatrickRothfuss(String expectedResult) {
+    public void theFirstResultIsTheNameOfTheWindPatrickRothfuss(String expectedResult) throws Exception {
         googleSearchController.isFirtDisplayedSearchedText(expectedResult);
 
     }

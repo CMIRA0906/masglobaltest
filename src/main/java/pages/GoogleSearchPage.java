@@ -7,13 +7,12 @@ import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import utility.BrowserConfiguration;
+import utility.SeleniumMethodsHelp;
 import utility.Waits;
 
 import java.util.List;
 
 public class GoogleSearchPage {
-
-    private BrowserConfiguration browserConfiguration = new BrowserConfiguration();
     private WebDriver driver;
 
 
@@ -29,13 +28,12 @@ public class GoogleSearchPage {
     @FindBy(xpath = "//*[@id=\"rso\"]/div[1]/div/div[1]/a/h3/span")
     private WebElement firtsResultLabel;
 
-    //@FindAll(@FindBy(xpath = "//*[@id=\"tsf\"]/div[2]/div[1]/div[2]/div[2]/ul/li"))
     @FindAll(@FindBy(xpath = "//*[@class='aajZCb']/ul/li"))
     private List<WebElement> suggestionList;
 
 
     public GoogleSearchPage() {
-        this.driver = browserConfiguration.getDriver();
+        this.driver = BrowserConfiguration.getDriver();
         PageFactory.initElements(driver, this);
     }
 
@@ -45,16 +43,19 @@ public class GoogleSearchPage {
     }
 
     public void typeIntoSearch(String wordTosearch) {
+        SeleniumMethodsHelp.highlightElement(searchTxt);
         searchTxt.sendKeys(wordTosearch);
     }
 
     public void clickToGoogleSearchBtn() {
         Waits waits = new Waits(driver);
         waits.waitElement(searchBtn);
+        SeleniumMethodsHelp.highlightElement(searchBtn);
         searchBtn.click();
     }
 
     public boolean resultIsDisplayed() {
+        SeleniumMethodsHelp.highlightElement(resultStatsLabel);
         return resultStatsLabel.isDisplayed();
     }
 
@@ -64,6 +65,7 @@ public class GoogleSearchPage {
 
     public void clickOnResultIsDisplayed(int resultNumber) {
         WebElement webElementResult = driver.findElement(By.xpath("//*[@id=\"rso\"]/div[" + resultNumber + "]/div/div[1]/a/h3/span"));
+        SeleniumMethodsHelp.highlightElement(webElementResult);
         webElementResult.click();
     }
 
@@ -73,24 +75,13 @@ public class GoogleSearchPage {
 
 
     public boolean isSuggestionListDisplayed() {
-
-        System.out.println(suggestionList.size());
-        System.out.println(suggestionList.size() > 0);
         return suggestionList.size() > 0;
 
     }
 
     public void iClickOnTheSuggestionInTheList(int recordNumber) {
+        SeleniumMethodsHelp.highlightElement(suggestionList.get(recordNumber));
         suggestionList.get(recordNumber).click();
-    }
-
-
-    public static void main(String[] args) {
-        GoogleSearchPage g = new GoogleSearchPage();
-        g.openGoogleSearch();
-        g.typeIntoSearch("The name of the wind");
-
-
     }
 
 

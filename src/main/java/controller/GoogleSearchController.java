@@ -40,7 +40,7 @@ public class GoogleSearchController {
     public void resultIsDisplayed() {
         try {
             Assert.assertTrue("Result is not displayed", googleSearchPage.resultIsDisplayed());
-        } catch (NoSuchElementException exception) {
+        } catch (Exception exception) {
             System.err.println(exception.getMessage());
         }
 

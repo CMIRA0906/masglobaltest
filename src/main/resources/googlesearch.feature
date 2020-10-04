@@ -19,6 +19,12 @@ Feature: Google Homepage Search
     When I click on the first result link
     Then System redirect to the "Patrick Rothfuss - The Books" page
 
+  Scenario: User search empty content in Google search
+    Given user is on the Google homepage
+    When User type " " into the search field
+    And User click the Google Search button
+    Then The system stay in Google home page
+
 
 
 

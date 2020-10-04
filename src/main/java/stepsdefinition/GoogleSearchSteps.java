@@ -47,4 +47,9 @@ public class GoogleSearchSteps {
         googleSearchController.isRedirecToPage(namePage);
 
     }
+
+    @Then("^The system stay in Google home page$")
+    public void theSystemStayInHomePage() {
+        googleSearchController.isRedirecToPage("Google");
+    }
 }

@@ -1,7 +1,8 @@
 # masglobaltest
 This project have the automation respect to Tecnica test wih google search
 
-Implemented follow scenarios
+
+Scenarios implemented
 
 Feature: Google Homepage Search
   I as User

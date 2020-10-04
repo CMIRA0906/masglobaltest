@@ -67,7 +67,22 @@ public class GoogleSearchController {
 
     public void isRedirecToPage(String namePage) {
         try {
-            Assert.assertEquals("System did not redirect no te expected page ",googleSearchPage.getNamePage(), namePage);
+            Assert.assertEquals("System did not redirect to expected page ",googleSearchPage.getNamePage(), namePage);
+        } catch (Exception exception) {
+            System.err.println(exception.getMessage());
+        }
+    }
+    public void isSuggestionListDisplayed() {
+        try {
+            Thread.sleep(6000);
+            Assert.assertTrue("Not displayed to the suggestion list ",googleSearchPage.isSuggestionListDisplayed());
+        } catch (Exception exception) {
+            System.err.println(exception.getMessage());
+        }
+    }
+    public void clicOnSuggestionInTheList(int recordNumber) {
+        try {
+            googleSearchPage.iClickOnTheSuggestionInTheList(recordNumber);
         } catch (Exception exception) {
             System.err.println(exception.getMessage());
         }

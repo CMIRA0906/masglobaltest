@@ -52,4 +52,16 @@ public class GoogleSearchSteps {
     public void theSystemStayInHomePage() {
         googleSearchController.isRedirecToPage("Google");
     }
+
+    @And("^the suggestions list is displayed$")
+    public void theSuggestionsListIsDisplayed() {
+        googleSearchController.isSuggestionListDisplayed();
+
+    }
+
+    @And("^I click on the first suggestion in the list$")
+    public void iClickOnTheFirstSuggestionInTheList() {
+
+        googleSearchController.clicOnSuggestionInTheList(0);
+    }
 }

@@ -1,7 +1,7 @@
 Feature: Google Homepage Search
-  I as User
-  want enter information in homepage
-  For seach information
+  As User
+  I want enter information in homepage
+  So that search information
 
   Scenario: User search content in Google search
     Given user is on the Google homepage

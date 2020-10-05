@@ -1,5 +1,5 @@
 Feature: Google Homepage Search
-  As User
+  As a User
   I want enter information in homepage
   So that search information
 

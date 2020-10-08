@@ -9,14 +9,18 @@ Feature: Google Homepage Search
     And User click the Google Search button
     Then System redirect to search results page
 
-  Scenario: User search specific content in Google search
+  Scenario Outline: User search specific content in Google search
     Given user is on the Google homepage
-    When User type "The name of the wind" into the search field
+    When User type "<textToSheard>" into the search field
     And User click the Google Search button
     Then System redirect to search results page
-    And the first result is "The Name of the Wind - Patrick Rothfuss"
+    And the first result is "<expectedResult>"
     When I click on the first result link
-    Then System redirect to the "Patrick Rothfuss - The Books" page
+    Then System redirect to the "<redirectedPage>" page
+    Examples:
+      | textToSheard         | expectedResult                                          | redirectedPage                                          |
+      | The name of the wind | The Name of the Wind - Patrick Rothfuss                 | Patrick Rothfuss - The Books                            |
+      | The name of the wind | El nombre del viento - Wikipedia, la enciclopedia libre | El nombre del viento - Wikipedia, la enciclopedia libre |
 
   Scenario: User search empty content in Google search
     Given user is on the Google homepage
@@ -30,15 +34,21 @@ Feature: Google Homepage Search
     And the suggestions list is displayed
 
 
-  Scenario: User search specific content using the suggestions
+  Scenario Outline: User search specific content using the suggestions
     Given user is on the Google homepage
-    When User type "The name of the w" into the search field
+    When User type "<textToSheard>" into the search field
     And the suggestions list is displayed
     And I click on the first suggestion in the list
     Then System redirect to search results page
-    And the first result is "The Name of the Wind - Patrick Rothfuss"
+    And the first result is "<expectedResult>"
     When I click on the first result link
-    Then System redirect to the "Patrick Rothfuss - The Books" page
+    Then System redirect to the "<redirectedPage>" page
+    Examples:
+    Examples:
+      | textToSheard         | expectedResult                                          | redirectedPage                                          |
+      | The name of the wind | The Name of the Wind - Patrick Rothfuss                 | Patrick Rothfuss - The Books                            |
+      | The name of the wind | El nombre del viento - Wikipedia, la enciclopedia libre | El nombre del viento - Wikipedia, la enciclopedia libre |
+
 
 
 

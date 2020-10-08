@@ -14,6 +14,7 @@ public class GoogleSearchController {
             googleSearchPage.openGoogleSearch();
         } catch (Exception e) {
             LogRegister.printLogError(e.getMessage());
+            Assert.fail();
         }
 
 
@@ -24,6 +25,7 @@ public class GoogleSearchController {
             googleSearchPage.typeIntoSearch(wordTosearch);
         } catch (NoSuchElementException e) {
             LogRegister.printLogError(e.getMessage());
+            Assert.fail();
         }
 
     }
@@ -33,6 +35,7 @@ public class GoogleSearchController {
             googleSearchPage.clickToGoogleSearchBtn();
         } catch (Exception e) {
             LogRegister.printLogError(e.getMessage());
+            Assert.fail();
         }
 
 
@@ -43,17 +46,18 @@ public class GoogleSearchController {
             Assert.assertTrue("Result is not displayed", googleSearchPage.resultIsDisplayed());
         } catch (Exception e) {
             LogRegister.printLogError(e.getMessage());
+            Assert.fail();
         }
 
     }
 
 
-    public void isFirtDisplayedSearchedText(String searchedText) throws Exception {
+    public void isFirtDisplayedSearchedText(String searchedText){
         try {
-            Assert.assertEquals("Found text is different that expected", googleSearchPage.getFirtsResultIsDisplayed(), searchedText);
+            Assert.assertEquals("Found text is different that expected", searchedText,googleSearchPage.getFirtsResultIsDisplayed());
         } catch (Exception e) {
             LogRegister.printLogError(e.getMessage());
-            throw new Exception(e.getMessage());
+            Assert.fail();
         }
 
 
@@ -64,6 +68,7 @@ public class GoogleSearchController {
             googleSearchPage.clickOnResultIsDisplayed(1);
         } catch (Exception e) {
             LogRegister.printLogError(e.getMessage());
+            Assert.fail();
         }
     }
 
@@ -72,6 +77,7 @@ public class GoogleSearchController {
             Assert.assertEquals("System did not redirect to expected page ",googleSearchPage.getNamePage(), namePage);
         } catch (Exception e) {
             LogRegister.printLogError(e.getMessage());
+            Assert.fail();
         }
     }
     public void isSuggestionListDisplayed() {
@@ -79,8 +85,8 @@ public class GoogleSearchController {
             Thread.sleep(6000);
             Assert.assertTrue("Not displayed to the suggestion list ",googleSearchPage.isSuggestionListDisplayed());
         } catch (Exception e) {
-
             LogRegister.printLogError(e.getMessage());
+            Assert.fail();
         }
     }
     public void clicOnSuggestionInTheList(int recordNumber) {
@@ -88,7 +94,7 @@ public class GoogleSearchController {
             googleSearchPage.iClickOnTheSuggestionInTheList(recordNumber);
         } catch (Exception e) {
             LogRegister.printLogError(e.getMessage());
-            LogRegister.printLogError(e.getMessage());
+            Assert.fail();
         }
     }
 

@@ -19,7 +19,7 @@ public class GoogleSearchPage {
     @FindBy(name = "q")
     private WebElement searchTxt;
 
-    @FindBy(name = "btnK")
+    @FindBy(css = "input[name='btnK']")
     private WebElement searchBtn;
 
     @FindBy(id = "result-stats")

@@ -3,7 +3,7 @@ package utility;
 import org.apache.log4j.Logger;
 
 public class LogRegister {
-    public static Logger log = Logger.getLogger("Mas Global test");
+    public static Logger log = Logger.getLogger("Cr test");
 
 
 
